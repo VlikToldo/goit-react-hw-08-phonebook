@@ -1,41 +1,23 @@
-import { useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import ContactForm from './ContactForm/ContactcForm';
-import ContactFilter from './ContactFilter/ContactFilter';
-import ContactList from './ContactList/ContactList';
-
-import { getFilteredContacts } from '../redux/contacts/contacts-selectors';
-
-import styles from './app.module.css';
+import Navbar from './Navbar/Navbar';
+import AddNumberPage from 'page/AddNumberPage/AddNumberPage';
+import NotFoundPage from '../page/NotFoundPage/NotFoundPage';
+import RegisterPage from 'page/RegisterPage/RegisterPage';
 
 export const App = () => {
-  const contacts = useSelector(getFilteredContacts);
-  const isContacts = Boolean(contacts.length);
-
   return (
-    <div className={styles.contactBox}>
-      <div className={styles.block}>
-        <h3>Pnonebook</h3>
-        <ContactForm />
-      </div>
-      <div className={styles.block}>
-        <h3>Contacts</h3>
-        <div className={styles.listBox}>
-          <ContactFilter />
-          {isContacts && <ContactList />}
-          {!isContacts && 'You dont have a contacts'}
-        </div>
-      </div>
-    </div>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<AddNumberPage />} />
+          <Route path='register' element={<RegisterPage/>}/>
+          <Route path="*" element={<NotFoundPage />}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
-
-
-
-
-
-
-
 
 // import Phonebook from "./Phonebook/Phonebook";
 

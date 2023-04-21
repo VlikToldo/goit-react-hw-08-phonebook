@@ -1,0 +1,16 @@
+.navLinkAuthBox {
+    
+    text-align: right;
+}
+
+.navLinkAuth{
+    font-family: inherit;
+    text-decoration: none;
+    color: aliceblue;
+
+
+}
+
+.navLinkAuth:global(.active){
+    font-weight: bold;
+}

@@ -4,10 +4,12 @@ import storage from 'redux-persist/lib/storage';
 
 import contactsSlice from './contacts/contacts-slice';
 import filterSlice from './filter/filter-slice'; 
+import authSlice from './auth/auth-slice';
 
 const rootReducer = combineReducers({
     contacts: contactsSlice,
     filter: filterSlice,
+    auth: authSlice
 })
 
 const persistConfig = {
