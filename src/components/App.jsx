@@ -18,7 +18,7 @@ export const App = () => {
     <AuthLayout>
       <BrowserRouter basename="/goit-react-hw-08-phonebook">
         <Routes>
-          <Route path="/" element={<Navbar />}>
+          <Route path="/register" element={<Navbar />}>
             <Route element={<PrivateRoute />}>
               <Route path="contacts" element={<AddNumberPage />} />
             </Route>
