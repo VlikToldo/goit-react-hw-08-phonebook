@@ -10,8 +10,6 @@ import style from './navbar.module.css';
 
 const Navbar = () => {
   const isLogin = useSelector(isUserLogin);
-  console.log(isLogin);
-
   return (
     <>
       <header className={style.header}>

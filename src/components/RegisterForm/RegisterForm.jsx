@@ -11,11 +11,11 @@ import style from './register-form.module.css';
 const RegisterForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
   const { name, email, password } = state;
-  console.log(state);
 
   return (
     <>
       <form onSubmit={handleSubmit} className={style.form}>
+        <h3>Register</h3>
         <TextField value={name} handleChange={handleChange} {...fields.name} />
         <TextField value={email} handleChange={handleChange} {...fields.email} />
         <TextField value={password} handleChange={handleChange} {...fields.password} />

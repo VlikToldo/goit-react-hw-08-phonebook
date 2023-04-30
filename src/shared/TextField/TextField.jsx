@@ -9,7 +9,7 @@ const TextField = ({label, handleChange, ...props}) => {
 
     return (
         <div className={style.formBox}>
-            <lable htmlFor={id}>{label}</lable>
+            <label htmlFor={id}>{label}</label>
             <input className={style.field} id={id} onChange={handleChange} {...props} />
         </div>
     )

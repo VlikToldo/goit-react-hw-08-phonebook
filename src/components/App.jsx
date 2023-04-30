@@ -1,24 +1,37 @@
-import {Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { lazy } from 'react';
 
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
+
+import AuthLayout from './AuthLayout/AuthLayout';
 import Navbar from './Navbar/Navbar';
-import AddNumberPage from 'page/AddNumberPage/AddNumberPage';
-import NotFoundPage from '../page/NotFoundPage/NotFoundPage';
-import RegisterPage from 'page/RegisterPage/RegisterPage';
-import LoginPage from 'page/LoginPage/LoginPage';
+const AddNumberPage = lazy(()=> import('page/AddNumberPage/AddNumberPage'));
+const NotFoundPage = lazy(()=> import('page/NotFoundPage/NotFoundPage'));
+const RegisterPage = lazy(()=> import('page/RegisterPage/RegisterPage'));
+const LoginPage = lazy(()=> import('page/LoginPage/LoginPage'));
+
+
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/goit-react-hw-08-phonebook">
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<AddNumberPage />} />
-          <Route path='register' element={<RegisterPage/>}/>
-          <Route path='login' element={<LoginPage/>}/>
-          <Route path="*" element={<NotFoundPage />}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  
+    <AuthLayout>
+      <BrowserRouter basename="/goit-react-hw-08-phonebook">
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route element={<PrivateRoute />}>
+              <Route path="contacts" element={<AddNumberPage />} />
+            </Route>
+            <Route element={<PublicRoute/>}>
+              <Route path="register" element={<RegisterPage />} />
+              <Route path="login" element={<LoginPage />} />
+            </Route>
+
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthLayout>
   );
 };
 

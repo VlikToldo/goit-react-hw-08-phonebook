@@ -1,29 +1,21 @@
-import { useSelector,useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-import LoginForm from "components/LoginForm/LoginForm";
+import LoginForm from 'components/LoginForm/LoginForm';
 
-import {login} from "redux/auth/auth-operations";
-import { isUserLogin } from "redux/auth/auth-selectors";
+import { login } from 'redux/auth/auth-operations';
 
 const LoginPage = () => {
-    const isLogin = useSelector(isUserLogin)
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    if (isLogin) {
-        return <Navigate to='/' />
-    }
+  const handleLogin = data => {
+    dispatch(login(data));
+  };
 
-    const handleLogin = (data) => {
-        dispatch(login(data))
-    }
-
-    return <div>
-        <h1>LoginPage</h1>
-        <div>
-            <LoginForm onSubmit={handleLogin}/>
-        </div>
-    </div>
-}
+  return (
+      <div>
+        <LoginForm onSubmit={handleLogin} />
+      </div>
+  );
+};
 
 export default LoginPage;
