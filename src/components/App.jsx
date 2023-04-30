@@ -1,9 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import Navbar from './Navbar/Navbar';
 import AddNumberPage from 'page/AddNumberPage/AddNumberPage';
 import NotFoundPage from '../page/NotFoundPage/NotFoundPage';
 import RegisterPage from 'page/RegisterPage/RegisterPage';
+import LoginPage from 'page/LoginPage/LoginPage';
 
 export const App = () => {
   return (
@@ -12,10 +13,12 @@ export const App = () => {
         <Route path="/" element={<Navbar />}>
           <Route index element={<AddNumberPage />} />
           <Route path='register' element={<RegisterPage/>}/>
+          <Route path='login' element={<LoginPage/>}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>
+  
   );
 };
 
