@@ -20,11 +20,11 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route element={<PrivateRoute />}>
-              <Route index element={<AddNumberPage />} />
+              <Route path='contacts' element={<AddNumberPage />} />
             </Route>
             <Route element={<PublicRoute/>}>
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="register" element={<RegisterPage />} />
+              <Route path="login" element={<LoginPage />} />
             </Route>
 
             <Route path="*" element={<NotFoundPage />} />
