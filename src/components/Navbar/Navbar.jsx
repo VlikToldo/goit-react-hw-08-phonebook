@@ -1,20 +1,19 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Outlet} from 'react-router-dom';
+
+import { useAuth } from 'shared/hooks/useAuth';
 
 import NavbarAuth from './NavbarAuth/NavbarAuth';
 import NavbarUser from './NavbarUser/NavbarUser';
-import { isUserLogin } from 'redux/auth/auth-selectors';
 
 import style from './navbar.module.css';
 
 const Navbar = () => {
-  const isLogin = useSelector(isUserLogin);
+  const {isLogin} = useAuth();
   return (
     <>
       <header className={style.header}>
-        {!isLogin && <NavbarAuth />}
-        {isLogin && <NavbarUser />}
+        {isLogin ? <NavbarUser /> : <NavbarAuth />}
       </header>
       <main className={style.main}>
         <Suspense fallback={<div>...Loading</div>}>

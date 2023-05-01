@@ -1,10 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-import { getAuth } from "redux/auth/auth-selectors";
+import { useAuth } from "shared/hooks/useAuth";
 
 const PublicRoute = () => {
-    const {isLogin, token} = useSelector(getAuth)
+    const {isLogin, token} = useAuth()
 
     if(!isLogin && token){
         return <p>...Loading</p>

@@ -1,15 +1,24 @@
 import TextField from 'shared/TextField/TextField';
 import Button from 'shared/components/Button/Button';
 
+import { useDispatch } from 'react-redux';
 import useForm from 'shared/hooks/useForm';
 
 import fields from './fields';
 import initialState from './initialState';
 
 import style from './register-form.module.css';
+import { signup } from 'redux/auth/auth-operations';
 
-const RegisterForm = ({ onSubmit }) => {
-  const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
+const RegisterForm = () => {
+
+  const dispatch = useDispatch();
+
+  const handleAuth = data => {
+    dispatch(signup(data));
+  };
+
+  const { state, handleChange, handleSubmit } = useForm({ initialState, handleAuth });
   const { name, email, password } = state;
 
   return (

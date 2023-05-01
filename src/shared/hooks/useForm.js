@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-const useForm = ({initialState, onSubmit})=> {
+const useForm = ({initialState, handleAuth})=> {
     const [state, setState] = useState({...initialState})
 
     const handleChange = useCallback(({target}) => {
@@ -12,7 +12,7 @@ const useForm = ({initialState, onSubmit})=> {
 
     const handleSubmit = e => {
         e.preventDefault();
-        onSubmit({...state});
+        handleAuth({...state});
         setState({...initialState});
     };
 

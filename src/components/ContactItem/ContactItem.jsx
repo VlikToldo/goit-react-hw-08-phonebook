@@ -16,11 +16,7 @@ const ContactItem = ({ id, number, name}) => {
   return (
     <li className={styles.item}>
       {name}: {number}
-      <button
-        className={styles.buttonRemove}
-        onClick={() => handleRemoveContact(id)}
-        type="button"
-      >
+      <button className={styles.buttonRemove} onClick={() => handleRemoveContact(id)} type="button">
         Delete
       </button>
     </li>

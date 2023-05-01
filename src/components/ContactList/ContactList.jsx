@@ -8,9 +8,7 @@ import styles from './contact-list.module.css';
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
 
-  const elements = contacts.map(item => (
-    <ContactItem key={item.id} {...item} />
-  ));
+  const elements = contacts.map(item => (<ContactItem key={item.id} {...item} />));
 
   return <ol className={styles.contactList}>{elements}</ol>;
 };
